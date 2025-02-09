@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Beranda } from "./page/Beranda";
+import { Masuk } from "./page/Masuk";
+import { Daftar } from "./page/Daftar";
+import { EditCatatan } from "./page/EditCatatan";
+import { EditProfil } from "./page/EditProfil";
+import { TambahCatatan } from "./page/TambahCatatan";
+import { DetailCatatan } from "./page/DetailCatatan";
+import { LupaPassword } from "./page/LupaPassword";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/masuk" element={<Masuk />} />
+          <Route path="/daftar" element={<Daftar />} />
+          <Route path="/" element={<Beranda />} />
+          <Route path="/:id_note" element={<DetailCatatan />} />
+          <Route path="/edit-catatan/:id_note" element={<EditCatatan />} />
+          <Route path="/edit-profil" element={<EditProfil />} />
+          <Route path="/tambah-catatan" element={<TambahCatatan />} />
+          <Route path="/lupa-password" element={<LupaPassword />} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
